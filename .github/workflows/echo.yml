@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.ECHO_PAT }}
+          github-token: ${{ secrets.ECHO_PAT_CONTENTS }}
           script: |
             await github.rest.repos.createDispatchEvent({
               owner: 'MarcoIeni',
