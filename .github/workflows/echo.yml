@@ -8,7 +8,7 @@ jobs:
         with:
           github-token: ${{ secrets.ECHO_PAT_CLASSIC }}
           script: |
-            await github.rest.actions.createDispatchEvent({
+            await github.rest.repos.createDispatchEvent({
               owner: 'MarcoIeni',
               repo: 'github-event-receiver',
               event_type: "echo",
