@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.ECHO_PAT_CLASSIC }}
+          github-token: ${{ secrets.ECHO_PAT }}
           script: |
             await github.rest.repos.createDispatchEvent({
               owner: 'MarcoIeni',
@@ -16,10 +16,3 @@ jobs:
                 name: 'marco',
               },
             })
-      # - name: Repository Dispatch
-      #   uses: peter-evans/repository-dispatch@v2
-      #   with:
-      #     token: ${{ secrets.ECHO_PAT_CLASSIC }}
-      #     repository: MarcoIeni/github-event-receiver
-      #     event-type: echo
-      #     client-payload: '{"name": "marco"}'
