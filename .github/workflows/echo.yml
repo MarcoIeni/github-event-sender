@@ -1,0 +1,18 @@
+name: Docker ORM
+on: [workflow_dispatch]
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          # github-token: ${{ secrets.ORM_DOCKER_PAT }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'MarcoIeni',
+              repo: 'github-event-receiver',
+              event_type: "echo",
+              client_payload: {
+                name: 'marco',
+              },
+            })
