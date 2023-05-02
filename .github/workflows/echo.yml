@@ -4,15 +4,22 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v6
+      # - uses: actions/github-script@v6
+      #   with:
+      #     github-token: ${{ secrets.ECHO_PAT_CLASSIC }}
+      #     script: |
+      #       await github.rest.actions.createWorkflowDispatch({
+      #         owner: 'MarcoIeni',
+      #         repo: 'github-event-receiver',
+      #         event_type: "echo",
+      #         client_payload: {
+      #           name: 'marco',
+      #         },
+      #       })
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
         with:
-          github-token: ${{ secrets.ECHO_PAT_CLASSIC }}
-          script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: 'MarcoIeni',
-              repo: 'github-event-receiver',
-              event_type: "echo",
-              client_payload: {
-                name: 'marco',
-              },
-            })
+          token: ${{ secrets.ECHO_PAT_CLASSIC }}
+          repository: MarcoIeni/github-event-receiver/
+          event-type: echo
+          client-payload: '{"name": "marco"}'
